@@ -1,0 +1,106 @@
+// include statements for all needed dependencies
+#include <TROOT.h>
+#include <TSystem.h>
+#include <TFile.h>
+#include <TTree.h>
+#include <TClonesArray.h>
+#include <TChain.h>
+#include <TCanvas.h>
+#include <TH1.h>
+#include <iostream>
+#include <TStyle.h>
+
+
+void overlay ()
+{
+
+//set up variables
+char hname[100];
+string histtype;
+
+//change this depending on which plot want to overlay
+histtype = "MET";
+/*
+photPt
+PhotT
+PhotTBar
+PhotPEta
+PhotPPhi
+PhotPEnergy
+MET
+*/
+
+//change outfile.root name depending which lifetime and mass plots wanted
+sprintf(hname, "%s_%s", histtype.c_str(), "n1000t5000"); 
+
+cout<<hname<<endl; //testing
+
+TFile *f1 = new TFile("m1000t50.root","READ");
+TH1F *h1 = (TH1F*)f1->Get(hname);
+
+//second ROOT file
+sprintf(hname, "%s_%s", histtype.c_str(), "n1000t500");
+TFile *f2 = new TFile("m500t50.root","READ");
+TH1F *h2 = (TH1F*)f2->Get(hname);
+
+
+// initialize a canvas to draw on
+TCanvas *c = new TCanvas("c", "c", 800, 600);
+gStyle->SetOptStat(0);
+
+h1->SetStats(kFALSE);
+h2->SetStats(kFALSE);
+h3->SetStats(kFALSE);
+h4->SetStats(kFALSE);
+h5->SetStats(kFALSE);
+
+// draw histogram on canvash2->SetLineColor(1);
+//scale so it works on the same plot
+
+
+h5->SetLineColor(2);
+h5->SetLineWidth(2);
+h5->Draw(); 
+
+h2->SetLineColor(1);
+h2->SetLineStyle(2);
+h2->SetLineWidth(2);
+h2->Draw("same");
+
+h3->SetLineColor(6);
+h3->SetLineWidth(2);
+h3->Draw("same");
+
+h4->SetLineColor(4);
+h4->SetLineWidth(2);
+h4->Draw("same");
+
+h1->SetLineColor(8);
+h1->SetLineWidth(2);
+h1->SetLineStyle(2);
+h1->SetLineWidth(2);
+h1->Draw("same");
+
+
+
+
+//make a legend
+auto legend = new TLegend(0.5, 0.5, 0.9, 0.7);
+//legend->SetHeader("Leading Photon Momentum (GeV)");
+//legend->SetHeader("Photon Time of Arrival (s)");
+//legend->SetHeader("Photon Time of Arrival, in Barrel (s)");
+//legend->SetHeader("Photon Eta Value");
+//legend->SetHeader("Photon Phi Value");
+legend->SetHeader("Event MET");
+//legend->SetHeader("Photon Energy");
+
+legend->AddEntry(h1,"Mass 1000 GeV, Lifetime 16.7 ns","l");
+legend->AddEntry(h2,"Mass 1000 GeV, Lifetime 1.67 ns","l");
+legend->AddEntry(h3,"Mass 500 GeV, Lifetime 16.7 ns","l");
+legend->AddEntry(h4,"Mass 500 GeV, Lifetime 1.67 ns","l");
+legend->AddEntry(h5,"Mass 500 GeV, Lifetime 0 ns","l");
+
+legend->Draw();
+
+}
+

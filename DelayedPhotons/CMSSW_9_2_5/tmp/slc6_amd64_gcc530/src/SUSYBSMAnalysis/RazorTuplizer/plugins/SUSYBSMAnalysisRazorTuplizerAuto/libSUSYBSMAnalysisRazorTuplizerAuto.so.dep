@@ -1,0 +1,16 @@
+tmp/slc6_amd64_gcc530/src/SUSYBSMAnalysis/RazorTuplizer/plugins/SUSYBSMAnalysisRazorTuplizerAuto/RazorAux.o: \
+ src/SUSYBSMAnalysis/RazorTuplizer/plugins/RazorAux.cc \
+ src/SUSYBSMAnalysis/RazorTuplizer/plugins/RazorTuplizer.h \
+ src/SUSYBSMAnalysis/RazorTuplizer/interface/EGammaMvaEleEstimatorCSA14.h \
+ src/SUSYBSMAnalysis/RazorTuplizer/interface/ElectronMVAEstimatorRun2NonTrig.h \
+ src/SUSYBSMAnalysis/RazorTuplizer/interface/EGammaMvaPhotonEstimator.h \
+ src/SUSYBSMAnalysis/RazorTuplizer/interface/RazorPDFWeightsHelper.h \
+
+tmp/slc6_amd64_gcc530/src/SUSYBSMAnalysis/RazorTuplizer/plugins/SUSYBSMAnalysisRazorTuplizerAuto/RazorTuplizer.o: \
+ src/SUSYBSMAnalysis/RazorTuplizer/plugins/RazorTuplizer.cc \
+ src/SUSYBSMAnalysis/RazorTuplizer/plugins/RazorTuplizer.h \
+ src/SUSYBSMAnalysis/RazorTuplizer/interface/EGammaMvaEleEstimatorCSA14.h \
+ src/SUSYBSMAnalysis/RazorTuplizer/interface/ElectronMVAEstimatorRun2NonTrig.h \
+ src/SUSYBSMAnalysis/RazorTuplizer/interface/EGammaMvaPhotonEstimator.h \
+ src/SUSYBSMAnalysis/RazorTuplizer/interface/RazorPDFWeightsHelper.h \
+

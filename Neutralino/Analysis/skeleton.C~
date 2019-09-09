@@ -1,0 +1,142 @@
+#if !defined(__CINT__) || defined(__MAKECINT__)
+// include statements for all needed dependencies
+#include <TROOT.h>
+#include <TSystem.h>
+#include <TFile.h>
+#include <TTree.h>
+#include <TClonesArray.h>
+#include <TChain.h>
+#include <TCanvas.h>
+#include <TH1.h>
+#include <iostream>
+
+#endif
+
+
+void skeleton(const TString inputfile="/afs/cern.ch/work/g/gkopp/Neutralino/Analysis/m500t50.root")
+//void skeleton(const TString inputfile="/afs/cern.ch/work/g/gkopp/Neutralino/Analysis/m1000t50.root")
+
+{
+  string SampleName = "m500t50";
+  string Outfile = "m500t50_out.root";
+
+  // read input input file
+  TChain chain("Events");
+  chain.Add(inputfile);
+//  ExRootTreeReader *treeReader = new ExRootTreeReader(&chain);
+  Long64_t numberOfEntries = treeReader->GetEntries();
+
+  // set up the output file for output root files to overlay plots
+  TFile *outfile = new TFile("m500t50_out.root","RECREATE");
+
+  // set up loop variable
+  Photon_B *PCaloHits_g4SimHits_EcalHitsEB_SIM;
+  Photon_E *PCaloHits_g4SimHits_EcalHitsEE_SIM;
+
+  // set up storage variables
+  Int_t iMaxPtPhoton=-1;
+  Photon *maxPtPhoton;
+
+  TClonesArray *branchPhoton_E = treeReader->UseBranch("PCaloHits_g4SimHits_EcalHitsEB_SIM");
+  TClonesArray *branchPhoton_B = treeReader->UseBranch("PCaloHits_g4SimHits_EcalHitsEE_SIM");
+
+  char hname[100];
+
+  sprintf(hname, "photEE_%s",SampleName.c_str());  
+  // set up output histogram
+  TH1D *hPhotEE = new TH1D(hname, hname, 30, 0, 1500); // endcap energy
+
+  sprintf(hname, "PhotEB_%s", SampleName.c_str());
+  TH1D *hPhotEB = new TH1D(hname, hname, 80, -0.000000003, 0.000000015); // barrel energy
+
+  sprintf(hname, "PhotTE_%s", SampleName.c_str());
+  TH1D *hPhotTE = new TH1D(hname, hname, 80, -0.000000003, 0.000000015); // endcap time
+
+  sprintf(hname, "PhotTB_%s", SampleName.c_str());
+  TH1D *hPhotTB = new TH1D(hname, hname, 30, -5, 5); // barrel time
+
+
+  for (Int_t iEntry=0; iEntry<numberOfEntries; iEntry++) { // event loop
+    treeReader->ReadEntry(iEntry);
+
+    // reset counter variable
+    iMaxPtPhoton=-1;
+
+    // skip event if it diesn't have at least one photon
+    if (branchPCaloHits_g4SimHits_EcalHitsEB_SIM->GetEntries()<1) continue;
+
+    for (Int_t iPhoton=0; iPhoton<branchPhoton->GetEntries(); iPhoton++) { // photon loop
+      PhotonB = (PCaloHits_g4SimHits_EcalHitsEB_SIM*) branch*PCaloHits_g4SimHits_EcalHitsEB_SIM->At(iPhoton);
+      PhotonE = (PCaloHits_g4SimHits_EcalHitsEE_SIM*) branch*PCaloHits_g4SimHits_EcalHitsEE_SIM->At(iPhoton);
+
+	// fill the histograms with the timestamp, and the timestamp of photons in the barrel (<1.48)
+      hPhotTB->Fill(PhotonB->myTime);          
+      hPhotTE->Fill(PhotonE->myTime); 
+
+      hPhotEB->Fill(PhotonB->myEnergy);
+      hPhotEE->Fill(PhotonE->myEnergy);
+
+    } // end photon loop
+         
+  } // end event loop
+
+  // initialize a canvas to draw on
+  TCanvas *c1 = new TCanvas("c1", "c1", 600, 600);
+
+  // draw histogram on canvas
+  hPhotEB->Draw();
+
+  // add axis labels
+  hPhotEB->GetXaxis()->SetTitle("Photons Energy, Barrel");
+  hPhotEB->GetYaxis()->SetTitle("Count");
+  hPhotEB->SetTitle(""); // title on top
+  c1->SaveAs( Form("EnergyB.C") );
+  c1->SaveAs( Form("EnergyB.pdf") );
+  hPhotEB->Write();
+
+  // initialize a canvas to draw on
+  TCanvas *c2 = new TCanvas("c2", "c2", 600, 600);
+
+  // draw histogram on canvas
+  hPhotEE->Draw();
+
+  // add axis labels
+  hPhotEE->GetXaxis()->SetTitle("Photon Energy, Endcap");
+  hPhotEE->GetYaxis()->SetTitle("Count");
+  hPhotEE->SetTitle(""); // title on top
+  c2->SaveAs( Form("EnergyE.C") );
+  c2->SaveAs( Form("EnergyE.pdf") );
+  hPhotEE->Write();
+
+  // initialize a canvas to draw on
+  TCanvas *c3 = new TCanvas("c3", "c3", 600, 600);
+
+  // draw histogram on canvas
+  hPhotTB->Draw();
+
+  // add axis labels
+  hPhotTB->GetXaxis()->SetTitle("Photon Time (in barrel)");
+  hPhotTB->GetYaxis()->SetTitle("Count");
+  hPhotTB->SetTitle(""); // title on top
+  c3->SaveAs( Form("PTime_Barrel.C") );
+  c3->SaveAs( Form("PTime_Barrel.pdf") );
+  hPhotTB->Write();
+
+  // initialize a canvas to draw on
+  TCanvas *c4 = new TCanvas("c4", "c4", 600, 600);
+
+  // draw histogram on canvas
+  hPhotTE->Draw();
+
+  // add axis labels
+  hPhotTE->GetXaxis()->SetTitle("Photon Time (in endcap)");
+  hPhotTE->GetYaxis()->SetTitle("Count");
+  hPhotTE->SetTitle(""); // title on top
+  c4->SaveAs( Form("PTime_Endcap.C") );
+  c4->SaveAs( Form("PTime_Endcap.pdf") );
+  hPhotTE->Write();
+
+  outfile->Close();
+      
+
+}

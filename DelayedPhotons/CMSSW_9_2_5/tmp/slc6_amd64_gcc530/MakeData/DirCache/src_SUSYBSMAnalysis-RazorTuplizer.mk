@@ -1,0 +1,2 @@
+ALL_SUBSYSTEMS+=SUSYBSMAnalysis-RazorTuplizer
+subdirs_src_SUSYBSMAnalysis-RazorTuplizer = src_SUSYBSMAnalysis-RazorTuplizer_data src_SUSYBSMAnalysis-RazorTuplizer_interface src_SUSYBSMAnalysis-RazorTuplizer_plugins src_SUSYBSMAnalysis-RazorTuplizer_python src_SUSYBSMAnalysis-RazorTuplizer_src

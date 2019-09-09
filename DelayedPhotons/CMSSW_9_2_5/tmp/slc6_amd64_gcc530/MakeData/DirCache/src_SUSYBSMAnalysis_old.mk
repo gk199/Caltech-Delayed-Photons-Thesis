@@ -1,0 +1,2 @@
+ALL_SUBSYSTEMS+=SUSYBSMAnalysis_old
+subdirs_src_SUSYBSMAnalysis_old = src_SUSYBSMAnalysis_old_data src_SUSYBSMAnalysis_old_interface src_SUSYBSMAnalysis_old_plugins src_SUSYBSMAnalysis_old_python src_SUSYBSMAnalysis_old_src

@@ -1,0 +1,1 @@
+SUSYBSMAnalysisRazorTuplizer SUSYBSMAnalysis/RazorTuplizer/srcRazorPDFWeightsHelper.cc SUSYBSMAnalysis/RazorTuplizer/srcEGammaMvaEleEstimatorCSA14.cc SUSYBSMAnalysis/RazorTuplizer/srcEGammaMvaPhotonEstimator.cc SUSYBSMAnalysis/RazorTuplizer/srcElectronMVAEstimatorRun2NonTrig.cc

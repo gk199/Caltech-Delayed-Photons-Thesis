@@ -1,0 +1,2 @@
+ALL_PACKAGES += RazorAnalyzer/Tools
+subdirs_src_RazorAnalyzer_Tools := src_RazorAnalyzer_Tools_SkimEvents src_RazorAnalyzer_Tools_SyncTools

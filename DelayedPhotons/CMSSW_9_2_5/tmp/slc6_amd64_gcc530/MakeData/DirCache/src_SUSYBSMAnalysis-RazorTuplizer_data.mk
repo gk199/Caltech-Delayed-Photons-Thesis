@@ -1,0 +1,2 @@
+ALL_PACKAGES += SUSYBSMAnalysis-RazorTuplizer/data
+subdirs_src_SUSYBSMAnalysis-RazorTuplizer_data := src_SUSYBSMAnalysis-RazorTuplizer_data_Spring16_GeneralPurpose_V1

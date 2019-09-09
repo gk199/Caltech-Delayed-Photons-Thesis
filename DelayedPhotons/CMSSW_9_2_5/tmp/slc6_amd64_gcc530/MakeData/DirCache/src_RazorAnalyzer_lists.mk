@@ -1,0 +1,2 @@
+ALL_PACKAGES += RazorAnalyzer/lists
+subdirs_src_RazorAnalyzer_lists := src_RazorAnalyzer_lists_Run2 src_RazorAnalyzer_lists_caltech src_RazorAnalyzer_lists_razorNtuplerV1p4-25ns_v1_v1

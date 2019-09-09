@@ -1,0 +1,3 @@
+/afs/cern.ch/work/g/gkopp/Thesis/MC_Nov24_noIsoCut/DelayedPhoton_GJets_HTall_TuneCUETP8M1_13TeV-madgraphMLM-pythia8_skimmed_skimmedpho1Pt.root
+/afs/cern.ch/work/g/gkopp/Thesis/MC_Nov24_noIsoCut/DelayedPhoton_QCD_HTall_TuneCUETP8M1_13TeV-madgraphMLM-pythia8_skimmed_skimmedpho1Pt.root
+/afs/cern.ch/work/g/gkopp/Thesis/MC_Nov24_noIsoCut/GMSB_L250TeV_Ctau200cm_13TeV-pythia8_skimmedpho1Pt.root

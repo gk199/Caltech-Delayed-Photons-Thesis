@@ -1,0 +1,7 @@
+
+/bin/rm -rf tmp/slc6_amd64_gcc530/edmplugins/poison/SUSYBSMAnalysis_old/data
+/bin/touch tmp/common/cache/packs/changed
+/bin/rm -rf tmp/slc6_amd64_gcc530/edmplugins/poison/SUSYBSMAnalysis_old/interface
+/bin/touch tmp/common/cache/packs/changed
+/bin/rm -rf tmp/slc6_amd64_gcc530/edmplugins/poison/SUSYBSMAnalysis_old/plugins
+/bin/touch tmp/common/cache/packs/changed

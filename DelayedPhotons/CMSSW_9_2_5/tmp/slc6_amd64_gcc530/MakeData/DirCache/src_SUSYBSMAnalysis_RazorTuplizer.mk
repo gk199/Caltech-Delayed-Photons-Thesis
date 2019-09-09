@@ -1,0 +1,2 @@
+ALL_PACKAGES += SUSYBSMAnalysis/RazorTuplizer
+subdirs_src_SUSYBSMAnalysis_RazorTuplizer := src_SUSYBSMAnalysis_RazorTuplizer_python src_SUSYBSMAnalysis_RazorTuplizer_src src_SUSYBSMAnalysis_RazorTuplizer_plugins

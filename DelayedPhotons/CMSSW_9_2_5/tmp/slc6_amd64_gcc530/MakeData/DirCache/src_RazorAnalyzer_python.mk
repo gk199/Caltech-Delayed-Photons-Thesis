@@ -1,0 +1,2 @@
+ALL_PACKAGES += RazorAnalyzer/python
+subdirs_src_RazorAnalyzer_python := src_RazorAnalyzer_python_macro src_RazorAnalyzer_python_src
